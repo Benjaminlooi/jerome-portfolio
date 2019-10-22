@@ -3,10 +3,10 @@
     <div class="menu inset-0" v-if="menuIsShow">
       <div class="menu-box">
         <div
-          class="menu-icon"
-          :class="menu_icon_hover_effect"
-          @mouseenter="mouse.menu_icon_hover = true"
-          @mouseleave="mouse.menu_icon_hover = false"
+          class="close-icon"
+          :class="close_icon_hover_effect"
+          @mouseenter="mouse.close_icon_hover = true"
+          @mouseleave="mouse.close_icon_hover = false"
           @click="closeMenu"
         >
           <img src="../assets/close.svg" alt />
@@ -36,7 +36,7 @@
 export default {
   data: () => ({
     mouse: {
-      menu_icon_hover: false
+      close_icon_hover: false
     },
     showMenuLinks: false,
     leaving: false,
@@ -60,9 +60,9 @@ export default {
     ]
   }),
   computed: {
-    menu_icon_hover_effect() {
+    close_icon_hover_effect() {
       return {
-        hover: this.mouse.menu_icon_hover
+        hover: this.mouse.close_icon_hover
       };
     },
     menuIsShow: function() {
@@ -98,17 +98,26 @@ export default {
   width: 100vw;
   height: 100vh;
 }
-.menu-icon {
+.close-icon {
   position: absolute;
   top: 57px;
   right: 70px;
   transition: transform 0.5s ease-out;
+  &.hover {
+    transform: rotate(-7deg);
+  }
+  img {
+    width: 40px;
+    animation: enter-rotate 1.5s ease-out;
+  }
 }
-.menu-icon.hover {
-  transform: rotate(-7deg);
-}
-.menu-icon img {
-  width: 40px;
+@keyframes enter-rotate {
+  0% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 ul.menu-links {
   margin: auto;
@@ -193,6 +202,16 @@ ul.menu-link-leave li {
 }
 .menu-transition-leave-to {
   transform: translateY(-100vh);
+}
+
+@media only screen and (max-width: 600px) {
+  ul.menu-links {
+    margin: auto 5px;
+  }
+  .close-icon {
+    top: 20px;
+    right: 25px;
+  }
 }
 </style>
 
