@@ -249,6 +249,9 @@ export default {
   .mouse_deco {
     display: none;
   }
+  .intro-first{
+    background-position: 20% 50%;
+  }
 }
 </style>
 
