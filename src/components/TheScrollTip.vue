@@ -13,10 +13,11 @@ div#scrollTip {
   position: absolute;
   border: 2px solid white;
   border-radius: 14px;
-  bottom: 40px;
+  bottom: 35px;
   left: calc(50vw - 12px);
   display: block;
   box-sizing: content-box;
+  animation: scroll-tip-intro 0.3s ease-out;
   &::after {
     content: "";
     width: 2px;
@@ -34,13 +35,21 @@ div#scrollTip {
   0% {
     height: 10px;
   }
-
   50% {
     height: 15px;
   }
-
   100% {
     height: 10px;
+  }
+}
+@keyframes scroll-tip-intro {
+  0% {
+    // border: 0px solid white;
+    transform: rotate(360deg);
+  }
+  100% {
+    // border: 2px solid white;
+    transform: rotate(0deg);
   }
 }
 </style>
