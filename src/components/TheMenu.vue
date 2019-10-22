@@ -12,7 +12,12 @@
           <img src="../assets/close.svg" alt />
         </div>
         <div class="menu-container">
-          <ul class="menu-links" :class="{'menu-link-leave': leaving}" v-if="showMenuLinks" @click="closeMenu">
+          <ul
+            class="menu-links"
+            :class="{'menu-link-leave': leaving}"
+            v-if="showMenuLinks"
+            @click="closeMenu"
+          >
             <!-- <transition name="menu-links-transition"  @after-leave="closeMenu"> -->
             <li v-for="link in links" :key="link.name">
               <router-link :to="link.path">
@@ -39,19 +44,19 @@ export default {
       {
         path: "/",
         name: "HOME"
-      },
-      {
-        path: "photos",
-        name: "PHOTO ALBUM"
-      },
-      {
-        path: "countdown",
-        name: "COUNTDOWN"
-      },
-      {
-        path: "lovelife",
-        name: "LOVE LIFE"
       }
+      // {
+      //   path: "photos",
+      //   name: "PHOTO ALBUM"
+      // },
+      // {
+      //   path: "countdown",
+      //   name: "COUNTDOWN"
+      // },
+      // {
+      //   path: "lovelife",
+      //   name: "LOVE LIFE"
+      // }
     ]
   }),
   computed: {
@@ -70,11 +75,11 @@ export default {
   methods: {
     closeMenu() {
       this.leaving = true;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.$store.commit("closeMenu");
         this.leaving = false;
         this.showMenuLinks = false;
-      },1)
+      }, 1);
     }
   }
 };
@@ -143,7 +148,7 @@ ul.menu-links {
   }
 }
 
-ul.menu-link-leave li{
+ul.menu-link-leave li {
   animation: fade-slide-leave 0.4s ease-out both;
 }
 @keyframes fade-slide-leave {

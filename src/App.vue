@@ -18,7 +18,7 @@ export default {
   computed: {},
   created() {
     let image = new Image();
-    image.src = require("./assets/jerome_bg.jpg");
+    image.src = require("./assets/DSC00968-min.jpg");
     image.onload = () => {
       this.$store.commit("updateIsLoading", false);
     };
