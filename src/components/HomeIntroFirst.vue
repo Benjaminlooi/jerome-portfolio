@@ -54,7 +54,7 @@
               xmlns:xlink="http://www.w3.org/1999/xlink"
             >
               <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-              <title>facebook-logo</title>
+              <title>facebook</title>
               <desc>Created with Sketch.</desc>
               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g class="social-icons" transform="translate(-1614.000000, -606.000000)" fill="#303030">
