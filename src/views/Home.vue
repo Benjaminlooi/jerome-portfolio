@@ -2,8 +2,9 @@
   <transition name="intro-first">
     <div class="home" v-if="showCustomCursor" @mousemove="updateMousePosition">
       <div>
-        <IntroFirst></IntroFirst>
-        <IntroSecond/>
+        <IntroFirst />
+        <HomeSectionManifesto />
+        <!-- <IntroSecond /> -->
       </div>
     </div>
   </transition>
@@ -11,13 +12,15 @@
 
 <script>
 import IntroFirst from "@/components/HomeIntroFirst";
-import IntroSecond from "@/components/HomeIntroSecond";
+import HomeSectionManifesto from "@/components/HomeSectionManifesto";
+// import IntroSecond from "@/components/HomeIntroSecond";
 
 export default {
   name: "home",
   components: {
     IntroFirst,
-    IntroSecond
+    HomeSectionManifesto
+    // IntroSecond
   },
   data: () => ({
     showCustomCursor: true
