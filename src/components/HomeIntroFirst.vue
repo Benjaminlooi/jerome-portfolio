@@ -3,40 +3,12 @@
     <span class="mouse_deco" :style="mouse_cursor" :class="mouse_cursor_effect"></span>
     <div class="main-copy">
       <span ref="spans" class="spanses">
-        <span>I</span>
-        <span>&nbsp;</span>
-        <span>a</span>
-        <span>m</span>
-        <span>&nbsp;</span>
-        <span>t</span>
-        <span>h</span>
-        <span>e</span>
-        <br />
-        <span>p</span>
-        <span>r</span>
-        <span>e</span>
-        <span>s</span>
-        <span>i</span>
-        <span>d</span>
-        <span>e</span>
-        <span>n</span>
-        <span>t</span>
-        <span>&nbsp;</span>
-        <span>o</span>
-        <span>f</span>
-        <br />
-        <span>U</span>
-        <span>n</span>
-        <span>i</span>
-        <span>t</span>
-        <span>e</span>
-        <span>n</span>
-        <span>'</span>
-        <span>s</span>
-        <br />
-        <span>M</span>
-        <span>P</span>
-        <span>P</span>
+        <div v-for="(line, index) in heroMessage" :key="index">
+          <span v-for="(char, index) in line" :key="index" class="charInSpanses">
+            <template v-if="char == ' '">&nbsp;</template>
+            <template v-else>{{char}}</template>
+          </span>
+        </div>
       </span>
     </div>
     <div class="name">R. Jerome</div>
@@ -57,7 +29,11 @@
               <title>facebook</title>
               <desc>Created with Sketch.</desc>
               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g class="social-icons" transform="translate(-1614.000000, -606.000000)" fill="#303030">
+                <g
+                  class="social-icons"
+                  transform="translate(-1614.000000, -606.000000)"
+                  fill="#303030"
+                >
                   <g id="facebook-logo" transform="translate(1614.000000, 606.000000)">
                     <path
                       d="M12.6572608,0.00505390836 L9.5074124,0 C5.96866577,0 3.68177224,2.34627695 3.68177224,5.9777628 L3.68177224,8.73391173 L0.514740566,8.73391173 C0.241071429,8.73391173 0.0194575472,8.9557783 0.0194575472,9.22944744 L0.0194575472,13.2227931 C0.0194575472,13.4964623 0.241324124,13.7180761 0.514740566,13.7180761 L3.68177224,13.7180761 L3.68177224,23.7945586 C3.68177224,24.0682278 3.90338612,24.2898416 4.17705526,24.2898416 L8.30913073,24.2898416 C8.58279987,24.2898416 8.80441375,24.0679751 8.80441375,23.7945586 L8.80441375,13.7180761 L12.5074124,13.7180761 C12.7810815,13.7180761 13.0026954,13.4964623 13.0026954,13.2227931 L13.0042116,9.22944744 C13.0042116,9.09804582 12.9519036,8.9722035 12.8591644,8.87921159 C12.7664252,8.78621968 12.6400775,8.73391173 12.5086759,8.73391173 L8.80441375,8.73391173 L8.80441375,6.39748989 C8.80441375,5.27451146 9.07201819,4.70443059 10.534872,4.70443059 L12.6567554,4.70367251 C12.9301718,4.70367251 13.1517857,4.48180593 13.1517857,4.20838949 L13.1517857,0.500336927 C13.1517857,0.227173181 12.9304245,0.00555929919 12.6572608,0.00505390836 Z"
@@ -83,7 +59,11 @@
               <title>instagram</title>
               <desc>Created with Sketch.</desc>
               <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g class="social-icons" transform="translate(-1609.000000, -744.000000)" fill="#282828">
+                <g
+                  class="social-icons"
+                  transform="translate(-1609.000000, -744.000000)"
+                  fill="#282828"
+                >
                   <g id="instagram" transform="translate(1609.000000, 744.000000)">
                     <path
                       d="M15.8125,0 L7.1875,0 C3.2185625,0 0,3.2185625 0,7.1875 L0,15.8125 C0,19.7814375 3.2185625,23 7.1875,23 L15.8125,23 C19.7814375,23 23,19.7814375 23,15.8125 L23,7.1875 C23,3.2185625 19.7814375,0 15.8125,0 Z M20.84375,15.8125 C20.84375,18.586875 18.586875,20.84375 15.8125,20.84375 L7.1875,20.84375 C4.413125,20.84375 2.15625,18.586875 2.15625,15.8125 L2.15625,7.1875 C2.15625,4.413125 4.413125,2.15625 7.1875,2.15625 L15.8125,2.15625 C18.586875,2.15625 20.84375,4.413125 20.84375,7.1875 L20.84375,15.8125 Z"
@@ -113,6 +93,7 @@
 import { mapState } from "vuex";
 import MenuIcon from "@/components/TheMenuIcon";
 import TheScrollTip from "@/components/TheScrollTip";
+import { TimelineMax, Back } from "gsap";
 
 export default {
   name: "IntroFirst",
@@ -121,7 +102,7 @@ export default {
     TheScrollTip
   },
   data: () => ({
-    //
+    heroMessage: ["I'm", "candidate #4", "for the", "upcoming", "MPP election"]
   }),
   computed: {
     ...mapState({
@@ -144,7 +125,25 @@ export default {
   },
   created() {},
   mounted() {
-    // console.log(this.$refs);
+    console.log(Math.random() * 300);
+    let t1 = new TimelineMax();
+    let spanses = document.querySelectorAll(".charInSpanses");
+
+    t1.staggerFrom(
+      spanses,
+      1,
+      {
+        opacity: 0,
+        filter: "blur(10px)",
+        x: function() {
+          return 300 - Math.random() * 600;
+        },
+        y: function() {
+          return 300 - Math.random() * 600;
+        }
+      },
+      0.1
+    );
   },
   methods: {}
 };
@@ -235,31 +234,8 @@ export default {
 }
 .spanses span {
   display: inline-block;
-  animation: blur 2.5s both, shake 5s 3.5s forwards infinite;
-}
-@keyframes blur {
-  0% {
-    transform: scale(3) translate(-94px, -62px);
-    opacity: 0;
-    filter: blur(10px);
-  }
-  30% {
-    opacity: 0.8;
-  }
-  50% {
-    // transform: translate(-19px, 24px);
-    opacity: 0.4;
-  }
-  80% {
-    filter: blur(7px);
-    transform: scale(1);
-    font-size: 7.4vh;
-  }
-  100% {
-    transform: translate(0);
-    filter: blur(0);
-    opacity: 1;
-  }
+  filter: blur(0);
+  animation: shake 5s 7s forwards infinite;
 }
 @keyframes shake {
   0% {
@@ -309,7 +285,7 @@ export default {
     background-position: 20% 50%;
     cursor: initial;
   }
-  .social-icons{
+  .social-icons {
     fill: #efefef;
   }
 }
