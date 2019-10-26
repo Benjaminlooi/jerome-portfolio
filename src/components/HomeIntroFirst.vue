@@ -12,6 +12,7 @@
       </span>
     </div>
     <div class="name">R. Jerome</div>
+    <div class="vote4">4</div>
     <MenuIcon noCursor="true"></MenuIcon>
     <div class="social-medias">
       <ul>
@@ -147,7 +148,8 @@ export default {
         },
         y: function() {
           return 300 - Math.random() * 600;
-        }
+        },
+        ease: Back.easeOut.config(0.6)
       },
       0.1
     );
@@ -188,8 +190,6 @@ export default {
   transition: transform 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .mouse_deco_enlarge_medium {
-  // width: 35px;
-  // height: 35px;
   transform: scale(2);
   border: 2px solid #282828;
 }
@@ -199,19 +199,19 @@ export default {
 }
 .main-copy {
   position: absolute;
-  top: 87px;
-  left: 90px;
+  top: 80px;
+  left: 80px;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   line-height: 0.9em;
-  font-size: 8.4vh;
+  font-size: 7.3vh;
   font-weight: 700;
   color: #303030;
 }
 .name {
   font-family: "Times New Roman", Times, serif;
   position: absolute;
-  left: 90px;
+  left: 80px;
   bottom: 35px;
   transform: rotate(-90deg);
   transform-origin: 0 0;
@@ -258,6 +258,14 @@ export default {
   100% {
     transform: skewX(0deg);
   }
+}
+.vote4 {
+  position: absolute;
+  left: 58vw;
+  bottom: 10vh;
+  font-size: 30rem;
+  line-height: 1;
+  color: #303030;
 }
 
 @media only screen and (max-width: 900px) {
