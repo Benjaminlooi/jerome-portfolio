@@ -134,25 +134,27 @@ export default {
   created() {},
   mounted() {
     console.log(Math.random() * 300);
-    let t1 = new TimelineMax();
-    let spanses = document.querySelectorAll(".charInSpanses");
+    setTimeout(() => {
+      let t1 = new TimelineMax();
+      let spanses = document.querySelectorAll(".charInSpanses");
 
-    t1.staggerFrom(
-      spanses,
-      1,
-      {
-        opacity: 0,
-        filter: "blur(10px)",
-        x: function() {
-          return 300 - Math.random() * 600;
+      t1.staggerFrom(
+        spanses,
+        1,
+        {
+          opacity: 0,
+          filter: "blur(10px)",
+          x: function() {
+            return 300 - Math.random() * 600;
+          },
+          y: function() {
+            return 300 - Math.random() * 600;
+          },
+          ease: Back.easeOut.config(0.6)
         },
-        y: function() {
-          return 300 - Math.random() * 600;
-        },
-        ease: Back.easeOut.config(0.6)
-      },
-      0.1
-    );
+        0.1
+      );
+    }, 1);
   },
   methods: {}
 };
@@ -272,8 +274,9 @@ export default {
   .main-copy {
     top: 50px;
     left: 30px;
-    transform: scale(0.8);
-    transform-origin: left top;
+    font-size: 6.8vh;
+    // transform: scale(0.8);
+    // transform-origin: left top;
   }
   .name {
     transform: scale(0.8) rotate(-90deg);
